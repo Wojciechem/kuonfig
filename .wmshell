@@ -1,0 +1,5 @@
+# behold
+function rsyncBothWays {
+    rsync -vturh $1 $2
+    rsync -vturh $2 $1
+}
