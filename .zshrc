@@ -16,10 +16,19 @@ colors
 
 function exitStatusIndicator()
 {
-  echo "%(?.%{$fg[green]%}[✓] .%{$fg[red]%}[✗] )"
+  echo "%(?.%{$fg[green]%}✓.%{$fg[red]%}✗) "
 }
 function userAtHost()
 {
   echo "%{$fg[yellow]%}%n@%m"
 }
-export PROMPT="$(exitStatusIndicator)$(userAtHost):%{$fg[blue]%}[%~]%{$fg[white]%}%(!.#.$) "
+function tildeCWD()
+{
+  echo "%{$fg[blue]%}[%~]"
+}
+function rootOrNot()
+{
+  echo "%{$fg[white]%}%(!.#.$)"
+}
+
+export PROMPT="$(exitStatusIndicator)$(userAtHost):$(tildeCWD)$(rootOrNot) "
